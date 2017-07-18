@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using IBlogIt.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using IBlogIt.Models.Account;
 
 namespace IBlogIt
 {
@@ -27,7 +31,25 @@ namespace IBlogIt
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            services.AddTransient<FormattingService>();
+
+            services.AddDbContext<AccountsDbContext>(options =>
+            {
+                var connectionstring = Configuration.GetConnectionString("IdentityDbContext");
+                options.UseSqlServer(connectionstring);
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AccountsDbContext>();
+
+           
+
+            services.AddDbContext<PostsDbContext>(options =>
+            {
+                var connectionstring = Configuration.GetConnectionString("PostsDb");
+                options.UseSqlServer(connectionstring);
+            });
+            
             services.AddMvc();
         }
 
@@ -46,6 +68,8 @@ namespace IBlogIt
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseIdentity();
 
             app.UseStaticFiles();
 

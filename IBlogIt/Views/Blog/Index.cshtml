@@ -1,0 +1,7 @@
+﻿@model IEnumerable<IBlogIt.Models.Post>
+
+@foreach (var post in Model)
+{
+    @Html.Partial("_Post", post)
+    <hr/>
+}

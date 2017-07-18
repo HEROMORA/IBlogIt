@@ -44,6 +44,19 @@
         <hr />
         <footer>
             <p>&copy; 2017 - IBlogIt</p>
+            <p>@{
+                if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Logout", "Logout", "Account", FormMethod.Post)
+                }
+                else
+                {
+                    @Html.ActionLink("Register", "Register", "Account", FormMethod.Post)
+                    <br />
+                    @Html.ActionLink("Login", "Login", "Account", FormMethod.Post)
+                }
+
+            }</p>
         </footer>
     </div>
 

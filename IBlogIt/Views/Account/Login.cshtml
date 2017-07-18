@@ -1,0 +1,17 @@
+﻿@model IBlogIt.Models.Account.LoginViewModel
+
+<h2>Login</h2>
+<hr />
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <div>@Html.LabelFor(x => x.UserName)</div>
+        <div>@Html.EditorFor(x => x.UserName)</div>
+        <br />
+        <div>@Html.LabelFor(x => x.Password)</div>
+        <div>@Html.EditorFor(x => x.Password)</div>
+        <br />
+        <input type="submit" name="submitter" value="Login" />
+    </fieldset>
+}

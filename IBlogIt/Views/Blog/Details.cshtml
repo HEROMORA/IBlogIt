@@ -1,0 +1,22 @@
+﻿@model IBlogIt.Models.Post
+@inject IBlogIt.Models.FormattingService Format
+
+<br />
+<hr/>
+<div>@Html.LabelFor(x => x.Id)</div>
+<div>@Model.Id</div>
+<br/>
+<div>@Html.LabelFor(x => x.Title)</div>
+<div>@Model.Title</div>
+<br/>
+<div>@Html.LabelFor(x => x.Author)</div>
+<div>@Model.Author</div>
+<br/>
+<div>@Html.LabelFor(x => x.Body)</div>
+<div>@Model.Body</div>
+<br/>
+<div>@Html.LabelFor(x => x.PostedTime)</div>
+<div>@Format.AsReadableDate(Model.PostedTime)</div>
+<br/>
+<hr/>
+

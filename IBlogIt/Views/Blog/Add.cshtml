@@ -1,0 +1,20 @@
+﻿@model IBlogIt.Models.Post
+
+<h3>@ViewBag.checkgot</h3>
+
+<hr />
+    @using (Html.BeginForm("Add", "Blog", FormMethod.Post))
+    {
+        
+        <fieldset>
+            <div>@Html.LabelFor(x => x.Title)</div>
+            <div>@Html.EditorFor(x => x.Title)</div>
+            <br />
+            <div>@Html.LabelFor(x => x.Body)</div>
+            <div>@Html.EditorFor(x => x.Body)</div>
+            <br />
+
+            <input type="submit" name="submitter" value="Submit" />
+        </fieldset>
+    }
+       

@@ -1,0 +1,20 @@
+﻿@model IBlogIt.Models.Account.RegisterViewModel
+
+<h2>Register</h2>
+<hr />
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <div>@Html.LabelFor(x => x.EmailAddress)</div>
+        <div>@Html.EditorFor(x => x.EmailAddress)</div>
+        <br />
+        <div>@Html.LabelFor(x => x.UserName)</div>
+        <div>@Html.EditorFor(x => x.UserName)</div>
+        <br/>
+        <div>@Html.LabelFor(x => x.Password)</div>
+        <div>@Html.EditorFor(x => x.Password)</div>
+        <br />
+        <input type="submit" name="submitter" value="Register" />
+    </fieldset>
+}

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<IBlogIt.Models.Post>
+<hr />
+<h1>@User.Identity.Name Profile</h1>
+<br />
+<br />
+<h3>Posts: </h3>
+<hr/>
+@foreach (var post in Model)
+{
+    @Html.Partial("_Post", post);
+}
