@@ -20,9 +20,12 @@ namespace IBlogIt.Models
         [Required]
         [DataType(DataType.Text)]
         public string Author { get; set; }
-
+        
         [Required]
         public virtual Post Post { get; set; }
+
+        [Required]
+        public long PostId { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]
